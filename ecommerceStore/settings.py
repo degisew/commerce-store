@@ -29,9 +29,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    # custom apps
-    'playground.apps.PlaygroundConfig',
+    # third party
     'debug_toolbar',
+
+    # custom apps
+    'playground',
+    'store',
+    'tags'
 ]
 
 # def show_toolbar(request):
