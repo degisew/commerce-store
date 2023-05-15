@@ -22,9 +22,9 @@ class Product(models.Model):
 
 
 class Customer(models.Model):
-    GOLD_MEMBERSHIP = 'G',
-    SILVER_MEMBERSHIP = 'S',
-    BRONZE_MEMBERSHIP = 'B',
+    GOLD_MEMBERSHIP = 'G'
+    SILVER_MEMBERSHIP = 'S'
+    BRONZE_MEMBERSHIP = 'B'
 
     MEMBERSHIP_CHOICES =[
         (BRONZE_MEMBERSHIP, 'Bronze'),
@@ -40,9 +40,9 @@ class Customer(models.Model):
     membership = models.CharField(max_length=1, choices=MEMBERSHIP_CHOICES, default=BRONZE_MEMBERSHIP)
 
 class Order(models.Model):
-    PENDING_STATUS = 'P',
-    COMPLETED_STATUS = 'C',
-    FAILED_STATUS = 'F',
+    PENDING_STATUS = 'P'
+    COMPLETED_STATUS = 'C'
+    FAILED_STATUS = 'F'
 
     PAYMENT_STATUS_CHOICES = [
         (PENDING_STATUS, 'Pending'),
