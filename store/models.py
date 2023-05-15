@@ -56,6 +56,7 @@ class Order(models.Model):
     class Address(models.Model):
         street = models.CharField(max_length=200)
         city = models.CharField(max_length=200)
+        zip = models.CharField(max_length=200, null=True)
         customer = models.OneToOneField(Customer, on_delete=models.CASCADE, primary_key=True)
 
 class OrderItem(models.Model):
