@@ -12,8 +12,9 @@ class Promotion(models.Model):
      discount = models.FloatField()
 class Product(models.Model):
     title = models.CharField(max_length=200)
+    slug = models.SlugField()
     description = models.TextField()
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    unit_price = models.DecimalField(max_digits=6, decimal_places=2)
     inventory = models.IntegerField()
     collection = models.ForeignKey(Collection, on_delete=models.PROTECT)
     promotions = models.ManyToManyField(Promotion) 
