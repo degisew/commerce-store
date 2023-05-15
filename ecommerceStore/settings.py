@@ -38,17 +38,9 @@ INSTALLED_APPS = [
     'tags'
 ]
 
-# def show_toolbar(request):
-#     return True
-# DEBUG_TOOLBAR_CONFIG = {
-# "SHOW_TOOLBAR_CALLBACK" : show_toolbar,
-# }
-
-
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
-
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
@@ -87,8 +79,12 @@ WSGI_APPLICATION = 'ecommerceStore.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST':'localhost',
+        'USER':'postgres',
+        'PASSWORD': '1234',
+        'NAME':'commerce',
+        'PORT':'5432'
     }
 }
 
