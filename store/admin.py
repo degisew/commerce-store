@@ -2,7 +2,6 @@ from django.contrib import admin, messages
 from django.db.models import Count
 from django.db.models.query import QuerySet
 from .models import Collection, Product, Customer, Order,OrderItem
-
 # Creating custom filtering
 class InventoryFilter(admin.SimpleListFilter):
     title = 'inventory'
