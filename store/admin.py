@@ -1,15 +1,31 @@
-from typing import Any
+from typing import Any, List, Optional, Tuple
 from django.contrib import admin
 from django.db.models import Count
+from django.db.models.query import QuerySet
 from .models import Collection, Product, Customer, Order
+
+# Creating custom filtering
+class InventoryFilter(admin.SimpleListFilter):
+    title = 'inventory'
+    parameter_name = 'inventory'
+
+    def lookups(self, request, model_admin):
+        return [
+            ('<10', 'Low')
+        ]
+    
+    def queryset(self, request, queryset: QuerySet):
+       if self.value() == '<10':
+           return queryset.filter(inventory__lt=10)
 
 # Customizing admin list page 
 @admin.register(Product) # shorter way of registering models
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['title', 'unit_price', 'inventory_status']
+    list_display = ['title', 'unit_price', 'inventory_status', 'collection']
     list_editable = ['unit_price']
     list_per_page = 10
     ordering = ['title', 'unit_price']
+    list_filter = ['collection', 'last_update', InventoryFilter]
 
     @admin.display(ordering='inventory') # Ordering logic for inventory_status
     def inventory_status(self, product):
