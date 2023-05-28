@@ -26,6 +26,12 @@ class Product(models.Model):
 
     last_update = models.DateTimeField(auto_now=True)
 
+    def __str__(self) -> str:
+        return self.title
+    
+    class Meta:
+        ordering = ['title']
+
 
 class Customer(models.Model):
     GOLD_MEMBERSHIP = "G"
