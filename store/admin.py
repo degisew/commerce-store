@@ -21,6 +21,7 @@ class InventoryFilter(admin.SimpleListFilter):
 # Customizing admin list page 
 @admin.register(Product) # shorter way of registering models
 class ProductAdmin(admin.ModelAdmin):
+    actions = ['clear_inventory_action']
     list_display = ['title', 'unit_price', 'inventory_status', 'collection']
     list_editable = ['unit_price']
     list_per_page = 10
@@ -32,6 +33,14 @@ class ProductAdmin(admin.ModelAdmin):
         if product.inventory < 10:
             return 'LOW'
         return 'OK'
+    @admin.action(description="Update Inventory")
+    def clear_inventory_action(self, request, queryset):
+        updated_count = queryset.update(inventory=0)
+        self.message_user(
+            request, 
+            f'{updated_count} inventory was successfully updated.'
+            )
+
 
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
