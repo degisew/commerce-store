@@ -1,5 +1,5 @@
 from typing import Any, List, Optional, Tuple
-from django.contrib import admin
+from django.contrib import admin, messages
 from django.db.models import Count
 from django.db.models.query import QuerySet
 from .models import Collection, Product, Customer, Order
@@ -21,6 +21,9 @@ class InventoryFilter(admin.SimpleListFilter):
 # Customizing admin list page 
 @admin.register(Product) # shorter way of registering models
 class ProductAdmin(admin.ModelAdmin):
+    prepopulated_fields = {
+        'slug': ['title']
+    }
     actions = ['clear_inventory_action']
     list_display = ['title', 'unit_price', 'inventory_status', 'collection']
     list_editable = ['unit_price']
@@ -38,7 +41,8 @@ class ProductAdmin(admin.ModelAdmin):
         updated_count = queryset.update(inventory=0)
         self.message_user(
             request, 
-            f'{updated_count} inventory was successfully updated.'
+            f'{updated_count} inventory was successfully updated.',
+            messages.SUCCESS
             )
 
 
