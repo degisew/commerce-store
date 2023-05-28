@@ -1,8 +1,7 @@
-from typing import Any, List, Optional, Tuple
 from django.contrib import admin, messages
 from django.db.models import Count
 from django.db.models.query import QuerySet
-from .models import Collection, Product, Customer, Order
+from .models import Collection, Product, Customer, Order,OrderItem
 
 # Creating custom filtering
 class InventoryFilter(admin.SimpleListFilter):
@@ -31,6 +30,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_per_page = 10
     ordering = ['title', 'unit_price']
     list_filter = ['collection', 'last_update', InventoryFilter]
+    search_fields = ['title']
 
     @admin.display(ordering='inventory') # Ordering logic for inventory_status
     def inventory_status(self, product):
@@ -55,11 +55,18 @@ class CustomerAdmin(admin.ModelAdmin):
     ordering = ['first_name', 'last_name']
     search_fields = ['first_name__istartswith']
 
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    autocomplete_fields = ['product']
+    extra=1
+
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['id', 'placed_at', 'customer']
+    inlines = [OrderItemInline]
     ordering = []
+    autocomplete_fields = ['customer']
 
 
 @admin.register(Collection)
