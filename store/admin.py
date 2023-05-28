@@ -24,6 +24,7 @@ class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ['title']
     }
+    autocomplete_fields = ['collection']
     actions = ['clear_inventory_action']
     list_display = ['title', 'unit_price', 'inventory_status', 'collection']
     list_editable = ['unit_price']
@@ -64,6 +65,7 @@ class OrderAdmin(admin.ModelAdmin):
 @admin.register(Collection)
 class CollectionAdmin(admin.ModelAdmin):
     list_display = ['title', 'products_count']
+    search_fields = ['title']
 
 
     def products_count(self, collection):
