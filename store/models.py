@@ -9,10 +9,22 @@ class Collection(models.Model):
         "Product", on_delete=models.SET_NULL, null=True, related_name="+"
     )
 
+    def __str__(self) -> str:
+        return self.title
+    
+    class Meta:
+        ordering = ['title']
+
 
 class Promotion(models.Model):
     description = models.CharField(max_length=255)
     discount = models.FloatField()
+
+    def __str__(self) -> str:
+        return self.description
+    
+    class Meta:
+        ordering = ['description']
 
 
 class Product(models.Model):
@@ -53,6 +65,12 @@ class Customer(models.Model):
         max_length=1, choices=MEMBERSHIP_CHOICES, default=BRONZE_MEMBERSHIP
     )
 
+    def __str__(self) -> str:
+        return self.first_name
+    
+    class Meta:
+        ordering = ['first_name']
+
 
 class Order(models.Model):
     PENDING_STATUS = "P"
@@ -77,6 +95,12 @@ class Address(models.Model):
     customer = models.OneToOneField(
         Customer, on_delete=models.CASCADE, primary_key=True
     )
+
+    def __str__(self) -> str:
+        return self.city
+    
+    class Meta:
+        ordering = ['city']
 
 
 class OrderItem(models.Model):
