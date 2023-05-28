@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     # custom apps
     'playground',
     'store',
+    'store_custom',
     'tags'
 ]
 
