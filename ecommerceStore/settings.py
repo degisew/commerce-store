@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     
     # third party
     'debug_toolbar',
-    'rest_framework'
+    'rest_framework',
 
     # custom apps
     'playground',
