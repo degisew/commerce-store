@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
+
 # Create your models here.
 
 
@@ -11,9 +12,9 @@ class Collection(models.Model):
 
     def __str__(self) -> str:
         return self.title
-    
+
     class Meta:
-        ordering = ['title']
+        ordering = ["title"]
 
 
 class Promotion(models.Model):
@@ -22,9 +23,9 @@ class Promotion(models.Model):
 
     def __str__(self) -> str:
         return self.description
-    
+
     class Meta:
-        ordering = ['description']
+        ordering = ["description"]
 
 
 class Product(models.Model):
@@ -32,13 +33,9 @@ class Product(models.Model):
     slug = models.SlugField()
     description = models.TextField()
     unit_price = models.DecimalField(
-        max_digits=6,
-        decimal_places=2,
-        validators=[MinValueValidator(1)]
-        )
-    inventory = models.IntegerField(
-        validators=[MinValueValidator(1)]
+        max_digits=6, decimal_places=2, validators=[MinValueValidator(1)]
     )
+    inventory = models.IntegerField(validators=[MinValueValidator(1)])
     collection = models.ForeignKey(Collection, on_delete=models.PROTECT)
     promotions = models.ManyToManyField(Promotion, blank=True, null=True)
 
@@ -46,9 +43,9 @@ class Product(models.Model):
 
     def __str__(self) -> str:
         return self.title
-    
+
     class Meta:
-        ordering = ['title']
+        ordering = ["title"]
 
 
 class Customer(models.Model):
@@ -72,10 +69,10 @@ class Customer(models.Model):
     )
 
     def __str__(self):
-        return f'{self.first_name} {self.last_name}'
-    
+        return f"{self.first_name} {self.last_name}"
+
     class Meta:
-        ordering = ['first_name']
+        ordering = ["first_name"]
 
 
 class Order(models.Model):
@@ -94,6 +91,7 @@ class Order(models.Model):
     )
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
 
+
 class Address(models.Model):
     street = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
@@ -104,9 +102,9 @@ class Address(models.Model):
 
     def __str__(self) -> str:
         return self.city
-    
+
     class Meta:
-        ordering = ['city']
+        ordering = ["city"]
 
 
 class OrderItem(models.Model):
