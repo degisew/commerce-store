@@ -3,14 +3,17 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Product
 from .serializers import ProductSerializers
-from store import serializers
 
 
-@api_view()
+@api_view(['GET', 'POST'])
 def product_list(request):
-    queryset = Product.objects.all()
-    serializer = ProductSerializers(queryset, many=True)
-    return Response(serializer.data)
+    if request.method == 'GET':
+        queryset = Product.objects.all()
+        serializer = ProductSerializers(queryset, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = ProductSerializers(data=request.data)
+        return Response('ok')
 
 
 @api_view()
