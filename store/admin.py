@@ -78,4 +78,4 @@ class CollectionAdmin(admin.ModelAdmin):
         return collection.products_count
 
     def get_queryset(self, request):
-        return super().get_queryset(request).annotate(products_count=Count("product"))
+        return super().get_queryset(request).annotate(products_count=Count("products"))
