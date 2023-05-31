@@ -132,7 +132,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Overriding django default behavior for decimal fields
+# Overriding django rest framework default behavior for decimal fields
 REST_FRAMEWORK = {
     'COERCE_DECIMAL_TO_STRING': False
 }
