@@ -1,13 +1,10 @@
 from django.shortcuts import get_object_or_404
 from django.db.models import Count
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework.views import APIView
 from rest_framework import status
 from .models import Collection, Product
 from .serializers import CollectionSerializer, ProductSerializer
-
 
 
 class ProductList(ListCreateAPIView):
@@ -47,7 +44,9 @@ class CollectionDetail(RetrieveUpdateDestroyAPIView):
        collection = get_object_or_404(Collection, pk=pk)
        if collection.products.count() > 0:
          return Response(
-             {'error': 'Collection cannot be deleted because it includes one or more products.'},
+             {
+                'error': 'Collection cannot be deleted because it includes one or more products.'
+            },
              status=status.HTTP_405_METHOD_NOT_ALLOWED)
        collection.delete()
        return Response(status=status.HTTP_204_NO_CONTENT)

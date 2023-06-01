@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     # third party
     'debug_toolbar',
     'rest_framework',
@@ -82,11 +82,11 @@ WSGI_APPLICATION = 'ecommerceStore.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'HOST':'localhost',
-        'USER':'postgres',
+        'HOST': 'localhost',
+        'USER': 'postgres',
         'PASSWORD': '1234',
-        'NAME':'commerce',
-        'PORT':'5432'
+        'NAME': 'commerce',
+        'PORT': '5432'
     }
 }
 
