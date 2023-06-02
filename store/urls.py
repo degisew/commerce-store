@@ -12,7 +12,6 @@ procuct_routers = routers.NestedDefaultRouter(router, 'products', lookup = 'prod
 procuct_routers.register('reviews', ReviewViewSet, basename='product-reviews')
 
 urlpatterns = router.urls + procuct_routers.urls
-# [
 #     path("products/", ProductList.as_view(), name="ProductList"),
 #     path("products/<int:pk>", ProductDetail.as_view(), name="ProductDetail"),
 #     path("collections/", CollectionList.as_view(), name="CollectionList"),
