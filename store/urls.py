@@ -14,4 +14,3 @@ procuct_routers.register('reviews', ReviewViewSet, basename='product-reviews')
 urlpatterns = router.urls + procuct_routers.urls
 #     path("collections/", CollectionList.as_view(), name="CollectionList"),
 #     path("collections/<int:pk>", CollectionDetail.as_view(), name="CollectionDetail"),
-#     ]
