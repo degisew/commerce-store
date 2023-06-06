@@ -4,8 +4,8 @@ from multiprocessing import get_context
 from django.shortcuts import get_object_or_404
 from django.db.models import Count
 from rest_framework import status
+from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.filters import SearchFilter
 from rest_framework.response import Response
 from .models import Collection, OrderItem, Product, Review
 from .serializers import CollectionSerializer, ProductSerializer, ReviewSerializer
@@ -14,8 +14,9 @@ from .serializers import CollectionSerializer, ProductSerializer, ReviewSerializ
 class ProductViewSet(ModelViewSet):
     serializer_class = ProductSerializer
 
-    filter_backends = [SearchFilter]
+    filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['title']
+    ordering_fields = ['unit_price']
 
     def get_queryset(self):
         queryset = Product.objects.all()
