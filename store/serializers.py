@@ -1,6 +1,7 @@
 from dataclasses import field, fields
 from decimal import Decimal
 from pyexpat import model
+from typing_extensions import ReadOnly
 from rest_framework import serializers
 from .models import Cart, Collection, Product, Review
 
@@ -37,6 +38,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 class CartSerializer(serializers.ModelSerializer):
+    id = serializers.UUIDField(read_only=True)
     class Meta:
         model = Cart
         fields = ['id'] 
