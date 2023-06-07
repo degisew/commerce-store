@@ -1,3 +1,4 @@
+from enum import unique
 from uuid import uuid4
 from django.db import models
 from django.core.validators import MinValueValidator
@@ -124,9 +125,13 @@ class Cart(models.Model):
 
 
 class CartItem(models.Model):
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveSmallIntegerField()
+
+    #unique constraint to avoid having duplicate instances.
+    class Meta:
+        unique_together = [['cart', 'product']]
 
 
 class Review(models.Model):
