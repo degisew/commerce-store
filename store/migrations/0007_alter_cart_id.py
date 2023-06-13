@@ -6,9 +6,9 @@ import uuid
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('store', '0006_Create_review_model'),
-    ]
+    # dependencies = [
+    #     ('store', '0006_Create_review_model'),
+    # ]
 
     operations = [
         migrations.AlterField(
