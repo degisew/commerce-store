@@ -1,7 +1,4 @@
-from dataclasses import field, fields
 from decimal import Decimal
-from pyexpat import model
-from typing_extensions import ReadOnly
 from rest_framework import serializers
 from .models import Cart, Collection, Product, Review
 
