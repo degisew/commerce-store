@@ -1,4 +1,3 @@
-from pyexpat import model
 from django.db.models import Count
 from rest_framework import status
 from rest_framework.filters import SearchFilter, OrderingFilter
