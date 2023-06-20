@@ -131,8 +131,12 @@ class CartItem(models.Model):
 
     #unique constraint to avoid having duplicate instances.
     class Meta:
-        unique_together = [['cart', 'product']]
-
+        constraints = [
+            models.UniqueConstraint(
+                fields=['cart', 'product'],
+                name='unique_cart_product'
+            )
+        ]
 
 class Review(models.Model):
     product = models.ForeignKey(
