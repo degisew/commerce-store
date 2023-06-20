@@ -86,12 +86,7 @@ class Migration(migrations.Migration):
                 ('product', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='store.product')),
             ],
         ),
-        migrations.AddField(
-            model_name='collection',
-            name='featured_product',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='store.product'),
-        ),
-        migrations.CreateModel(
+         migrations.CreateModel(
             name='CartItem',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
@@ -100,4 +95,9 @@ class Migration(migrations.Migration):
                 ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='store.product')),
             ],
         ),
+        migrations.AddField(
+            model_name='collection',
+            name='featured_product',
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='store.product'),
+        )
     ]
