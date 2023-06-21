@@ -1,6 +1,3 @@
-from cgitb import lookup
-from django.urls import path
-from rest_framework.routers import DefaultRouter
 from rest_framework_nested import routers
 from .views import CartItemViewSet, CartViewSet, CollectionViewSet, ProductViewSet, ReviewViewSet
 
@@ -12,5 +9,7 @@ router.register('carts', CartViewSet)
 procuct_routers = routers.NestedDefaultRouter(
     router, 'products', lookup='product')
 procuct_routers.register('reviews', ReviewViewSet, basename='product-reviews')
+cart_routers = routers.NestedDefaultRouter(router, 'carts', lookup='cart')
+cart_routers.register('items', CartItemViewSet, basename='cart-items')
 
-urlpatterns = router.urls + procuct_routers.urls
+urlpatterns = router.urls + procuct_routers.urls + cart_routers.urls
