@@ -6,7 +6,7 @@ from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin, ListMode
 from rest_framework.response import Response
 from store.pagination import DefaultPagination
 from .models import Cart, CartItem, Collection, OrderItem, Product, Review
-from .serializers import CartItemSerializer, CartSerializer, CollectionSerializer, ProductSerializer, ReviewSerializer
+from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, ProductSerializer, ReviewSerializer
 
 
 class ProductViewSet(ModelViewSet):
@@ -71,7 +71,11 @@ class CartViewSet(CreateModelMixin, RetrieveModelMixin, DestroyModelMixin, Gener
 
 
 class CartItemViewSet(ModelViewSet):
-    serializer_class = CartItemSerializer
+    # Dynamically ender serializer class
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return AddCartItemSerializer
+        return CartItemSerializer
 
     def get_queryset(self):
         print(self.kwargs)
