@@ -36,8 +36,8 @@ INSTALLED_APPS = [
     # custom apps
     'playground',
     'store',
-    'store_custom',
-    'tags'
+    'tags',
+    'core'
 ]
 
 INTERNAL_IPS = [
