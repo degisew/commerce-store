@@ -8,7 +8,7 @@ commerce-store is an E-commerce appliaction backend built with django.
 
         2. Navigate to virtual environment and activate
 
-        2. Install requirments.txt
+        3. Install requirments.txt
 
             pip install -r requirements.txt
 
