@@ -1,7 +1,7 @@
 # commerce-store
 commerce-store is an E-commerce appliaction backend built with django.
 
-  ##How to run the api on local machine
+  ##How to run the api on windows local machine
   
         1. Create a virtual envionment
              python -m venv any-name
