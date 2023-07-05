@@ -7,6 +7,7 @@ from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin, DestroyModelMixin, UpdateModelMixin
 from rest_framework.response import Response
 from store.pagination import DefaultPagination
+from store.permissions import IsAdminOrReadOnly
 from .models import Cart, CartItem, Collection, Customer, OrderItem, Product, Review
 from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, CustomerSerializer, ProductSerializer, ReviewSerializer, UpdateCartItemSerializer
 
@@ -18,6 +19,7 @@ class ProductViewSet(ModelViewSet):
     pagination_class = DefaultPagination
     search_fields = ['title']
     ordering_fields = ['unit_price']
+    permission_classes = [IsAdminOrReadOnly]
 
     def get_queryset(self):
         queryset = Product.objects.all()
