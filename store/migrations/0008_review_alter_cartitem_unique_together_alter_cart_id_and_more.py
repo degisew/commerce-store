@@ -24,11 +24,6 @@ class Migration(migrations.Migration):
             name='cartitem',
             unique_together=set(),
         ),
-        migrations.AlterField(
-            model_name='cart',
-            name='id',
-            field=models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
-        ),
         migrations.AddConstraint(
             model_name='cartitem',
             constraint=models.UniqueConstraint(fields=('cart', 'product'), name='unique_cart_product'),
