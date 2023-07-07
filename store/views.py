@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from store.pagination import DefaultPagination
 from store.permissions import IsAdminOrReadOnly
 from .models import Cart, CartItem, Collection, Customer, Order, OrderItem, Product, Review
-from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, CustomerSerializer, OrderSerializer, ProductSerializer, ReviewSerializer, UpdateCartItemSerializer
+from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, CreateOrderSerializer, CustomerSerializer, OrderSerializer, ProductSerializer, ReviewSerializer, UpdateCartItemSerializer
 
 
 class ProductViewSet(ModelViewSet):
@@ -114,9 +114,16 @@ class CustomerViewSet(ModelViewSet):
         
  
 class OrderViewSet(ModelViewSet):
-    #queryset = Order.objects.all()
-    serializer_class = OrderSerializer
     permission_classes = [IsAuthenticated]
+
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return CreateOrderSerializer
+        return OrderSerializer
+    
+    def get_serializer_context(self):
+        return {'user_id': self.request.user.id}
+    
     def get_queryset(self):
         user = self.request.user
         if user.is_staff:

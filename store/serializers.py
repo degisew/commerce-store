@@ -129,3 +129,10 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ['id', 'customer', 'placed_at', 'payment_status', 'items']
+
+
+class CreateOrderSerializer(serializers.Serializer):
+    cart_id = serializers.UUIDField()
+
+    def save(self, **kwargs):
+        print(self.context['user_id'])
