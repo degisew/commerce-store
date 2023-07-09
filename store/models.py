@@ -3,8 +3,6 @@ from django.conf import settings
 from django.db import models
 from django.core.validators import MinValueValidator
 
-# Create your models here.
-
 
 class Collection(models.Model):
     title = models.CharField(max_length=200)
