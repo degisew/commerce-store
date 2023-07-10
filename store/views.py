@@ -114,7 +114,7 @@ class CustomerViewSet(ModelViewSet):
         
  
 class OrderViewSet(ModelViewSet):
-    http_method_names = ['get', 'delete', 'patch', 'head', 'options']
+    http_method_names = ['get', 'post', 'delete', 'patch', 'head', 'options']
     def get_permissions(self):
         if self.request.method in ['PATCH', 'DELETE']:
             return [IsAdminUser()]
