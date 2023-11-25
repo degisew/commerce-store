@@ -1,7 +1,7 @@
 # commerce-store
 commerce-store is an E-commerce appliaction backend built with django.
 
-  ##How to run the api on windows local machine
+  ## How to run the api on windows local machine
         1. Install pipenv
            pip install pipenv
   
@@ -14,4 +14,3 @@ commerce-store is an E-commerce appliaction backend built with django.
         3. Install packages
 
            pipenv install
-
