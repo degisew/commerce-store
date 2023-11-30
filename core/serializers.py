@@ -10,3 +10,4 @@ class UserCreateSerializer(BaseUserCreateSerializer):
 class UserSerializer(BaseUserSerializer):
     class Meta(BaseUserSerializer.Meta):
         fields = ['id', 'username', 'email', 'first_name', 'last_name']
+        ref_name = 'DjoserUser' # I added for swagger schema generation to avoid conflict
