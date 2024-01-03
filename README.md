@@ -203,7 +203,7 @@ If you like this project give a ⭐️ to repo.
 
 ## 🙏 Acknowledgments <a id="acknowledgements"></a>
 
-I want to thank the Haron Computers team.
+I want to thank all my supporters.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
