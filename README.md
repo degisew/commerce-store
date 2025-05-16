@@ -55,7 +55,7 @@ After you're finished please remove all the comments and instructions!
 <!-- PROJECT DESCRIPTION -->
 
 # 📖 Commerce Store <a id="about-project"></a>
- **Commerce Store** is A back-end e-commerce API built with Python, Django, and PostgreSQL that is fully functional and ready to integrate with a front-end UI. It includes endpoints for creating, retrieving, updating, and deleting products, as well as for managing orders, customers, carts, and their items. The API is built on a scalable and secure infrastructure.
+ **Commerce Store** is A back-end e-commerce API built with Python, Django, and PostgreSQL. It includes endpoints for creating, retrieving, updating, and deleting products, as well as for managing orders, customers, carts, and their items.
 
 <a name="readme-top"></a>
 
