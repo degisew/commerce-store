@@ -1,219 +1,222 @@
-<!--
-HOW TO USE:
-This is an example of how you may give instructions on setting up your project locally.
+# Commerce Store
 
-Modify this file to match your project and remove sections that don't apply.
+<div align="center">
 
-REQUIRED SECTIONS:
-- Table of Contents
-- About the Project
-  - Built With
-  - Live Demo
-- Getting Started
-- Authors
-- Future Features
-- Contributing
-- Show your support
-- Acknowledgements
-- License
+<!-- ![Project Logo](https://via.placeholder.com/150x150/0066cc/ffffff?text=LOGO) -->
 
-After you're finished please remove all the comments and instructions!
--->
+**A back-end e-commerce API built with Python, Django, and PostgreSQL.**
 
-<!-- <div align="center">
-  <!-- You are encouraged to replace this logo with your own! Otherwise, you can also remove it. -->
-  <!-- <img src="https://user-images.githubusercontent.com/86473715/208989298-61c26953-a6ea-4543-9250-465e28dd057a.png" alt="logo" width="140"  height="auto" />
-  <br/> -->
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
+[![Django](https://img.shields.io/badge/Django-4.x-green.svg)](https://djangoproject.com)
+[![Docker](https://img.shields.io/badge/Docker-20.10+-blue.svg)](https://docker.com)
 
-<!-- TABLE OF CONTENTS -->
+**Contact**: [degisew.mengist21@gmail.com](mailto:degisew.mengist21@gmail.com) | [LinkedIn](https://linkedin.com/in/degisew-mengist)
 
-<div id="readme-top"></div>
+</div>
 
-# 📗 Table of Contents
+## Overview
 
-- [📖 About the Project](#about-project)
-  - [🛠 Built With](#built-with)
-    - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
-- [💻 Getting Started](#getting-started)
-  - [Setup](#setup)
-  - [Prerequisites](#prerequisites)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
-- [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ](#faq)
-- [📝 License](#license)
+A back-end e-commerce API built with Python, Django, and PostgreSQL. It includes endpoints for creating, retrieving, updating, and deleting products, as well as for managing orders, customers, carts, and their items.
 
+**Key Features**:
 
-<!-- PROJECT DESCRIPTION -->
+- Secure JWT authentication and role-based access control.
+- Containerized deployment with Docker.
+- Products Catalog management.
+- Shopping Cart and Orders management.
 
-# 📖 Commerce Store <a id="about-project"></a>
- **Commerce Store** is A back-end e-commerce API built with Python, Django, and PostgreSQL. It includes endpoints for creating, retrieving, updating, and deleting products, as well as for managing orders, customers, carts, and their items.
+<!-- **Links**:
 
-<a name="readme-top"></a>
+- **Portfolio**: [Portfolio](https://degisew-portfolio.netlify.com)
+- **GitHub**: [GitHub](https://github.com/degisew)
+- **LinkedIn**: [LinkedIn](https://linkedin.com/in/degisew-mengist) -->
 
-## 🛠 Built With <a id="built-with"></a>
-- Django
+## Table of Contents
 
-### Tech Stack <a id="tech-stack"></a>
-- Python
-- Django
-- Django-rest-framework
+- [Overview](#overview)
+- [Quick Start](#quick-start)
+- [Project Structure](#project-structure)
+- [Setup](#setup)
+- [API Reference](#api-reference)
+- [Architecture](#architecture)
+  <!-- - [Testing](#testing) -->
+- [Deployment](#deployment)
+
+## Quick Start
+
+```bash
+# Clone the repo
+git clone https://github.com/degisew/commerce-store.git
+cd commerce-store
+
+# Run with Docker
+docker-compose up --build
+
+# OR run locally
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements/dev.txt
+python manage.py runserver
+```
+
+**Access**: [http://localhost:8000/api/v1/docs](http://localhost:8000/docs) for API docs.
+
+## Project Structure
+
+```bash
+├── apps/                 # Custom Apps collection
+├── config/               # Project Configurations
+├── docker
+│     └── dev/
+│          └── Dockerfile # Django API Dockerfile for development environment
+├── docs/                 # Documentation files
+├── requirements/         # requirements.txt files collection
+├── .env                  # Environment variables (you will create this)
+├── compose.yaml          # Docker Compose configuration file
+└── README.md             # This README file
+```
+
+## Setup
 
 <details>
-  <summary>Server</summary>
-  <ul>
-    <li><a href="https://djangoproject.com/">Django</a></li>
-  </ul>
-</details>
-
-<details>
-<summary>Database</summary>
-  <ul>
-    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
-  </ul>
-</details>
-
-<!-- Features -->
-### Key Features <a id="key-features"></a>
-
-- **Users can buy online**
-- **Owners can sell their products**
-- **Implemented high-level security measures**
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LIVE DEMO -->
-## 🚀 Live Demo <a id="live-demo"></a>
-Not Available yet!
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-<!-- GETTING STARTED -->
-
-## 💻 Getting Started <a id="getting-started"></a>
-To get a local copy up and running, follow these steps.
+<summary><strong>Show Setup Details</strong></summary>
 
 ### Prerequisites
 
-To run this project you need:
+- Python 3.10+
+- Docker 20.10+ & Docker Compose 1.29+
+- PostgreSQL 14+ (for local setup)
+- Git 2.30+
 
-- to have [Python](https://python.org/) installed on your machine
-- to have [PostgreSQL](https://www.postgresql.org/) installed on your machine
-### Setup
+### Instructions
 
-To get a local copy up and running follow these simple example steps.
+1. **Clone the Repository**:
 
-1. Navigate to a folder where you want the cloned file to appear
+   ```bash
+   git clone https://github.com/degisew/commerce-store.git
+   cd commerce-store
+   ```
 
-2. Clone this repo in your terminal or git bash using the command
-```sh
-  cd commerce-store
-  git clone https://github.com/degisew/commerce-store.git
+2. **Configure Environment**:
+
+   ```bash
+   Create a .env file with-in your root project directory and store secure values.
+   ```
+
+   Example `.env`:
+
+   ```bash
+   # Database
+   POSTGRES_USER=your_db_user
+   POSTGRES_PASSWORD=your_db_password
+   POSTGRES_DB=your_db_name
+
+   # Django
+   SECRET_KEY=your_secret_key
+   DB_USER=your_database_user
+
+   # Optional: pgAdmin
+   PGADMIN_DEFAULT_EMAIL=admin@example.com
+   PGADMIN_DEFAULT_PASSWORD=your_pgadmin_password
+   ```
+
+3. **Run the Application**:
+   - **Docker (Recommended)**:
+
+     ```bash
+     docker-compose up --build
+     ```
+
+   - **Local Development**:
+
+     ```bash
+     python -m venv venv
+     source venv/bin/activate
+     pip install -r requirements/dev.txt
+     python manage.py runserver
+     ```
+
+4. **Access Services**:
+   - API: [http://localhost:8000](http://localhost:8000)
+   - API Docs: [http://localhost:8000/api/v1/docs](http://localhost:8000/api/v1/docs)
+   - pgAdmin (if included): [http://localhost:8001](http://localhost:8001)
+
+</details>
+
+## API Reference
+
+<details>
+<summary><strong>Show API Reference</strong></summary>
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/v1/store/products` | GET | List all available products |
+| `/api/v1/core/users` | GET | List Registered accounts |
+| `/api/v1/store/collections` | GET | List all Product Categories |
+
+
+**Full Docs**: [http://localhost:8000/api/v1/docs](http://localhost:8000/api/v1/docs)
+
+</details>
+
+## Architecture
+
+**Tech Stack**:
+
+- **Backend**: Django, and Django Rest Framework for RESTful APIs
+- **Database**: PostgreSQL
+- **DevOps**: Docker, Docker-compose
+
+<!-- ## Testing
+
+<details>
+<summary><strong>Show Testing Details</strong></summary>
+
+```bash
+# Run tests With coverage
+docker compose exec api pytest
+
+- 85%+ test coverage with `pytest` and `coverage.py`.
+- Includes unit tests (models, utilities) and integration tests (API endpoints).
 ```
 
-3. Run the following command to install all the necessary dependencies
+</details> -->
 
- ```sh
-  cd commerce-store
-  pip install pipenv
-  pipenv install    # This will create a virtual env't and install dependencies in the virtual env't.
-``` 
+## Deployment
 
-4. Navigate to the folder called commerce-store/ and open this project using your editor
+<details>
+<summary><strong>Show Deployment Details</strong></summary>
 
-### Usage
-To run the project, first activate your virtual environment:
-```sh
-  pipenv shell
+### Production
+
+```bash
+
+# Run with Docker Compose
+docker-compose -f compose.prod.yaml up -d
 ```
 
-Once you have activated, execute the following command to run the server:
+### Environment Variables
 
-```sh
-cd commerce-store
-
-For Mac/Linux run:
- python3 manage.py runserver
-
-For Windows run:
- python manage.py runserver
+```bash
+DB_USER=your_database_user
+REDIS_URL=redis://host:6379/0
+SECRET_KEY=your-secret-key
+ALLOWED_HOSTS=your-domain.com
 ```
-- This above command will start the Django server in your browser
 
-Runs the app in the development mode.\
-Open [http://localhost:8000](http://localhost:8000) to view it in your browser.
+</details>
 
-### Deployment
+## License
 
-You can deploy this project using:
+MIT License. See [LICENSE](LICENSE).
 
-- pythonanywhere
-- Heroku
-- Renderer
+<div align="center">
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+**⭐ Star this repo if you found it useful!**
 
-<!-- AUTHORS -->
+Built by [Degisew Mengist](https://github.com/degisew)
 
-## 👥 Authors <a id="authors"></a>
+[⬆ Back to Top](#commerce-store)
 
-👤 **Degisew**
-
-- GitHub: [degisew](https://github.com/degisew)
-- LinkedIn: [Degisew](https://linkedin.com/in/degisew-mengist)
-- Twitter: [@Dj_etiya](https://twitter.com/DJ_etiya)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- FUTURE FEATURES -->
-
-## 🔭 Future Features <a id="future-features"></a>
-
-- Integrate with the front-end app
-- Deploy and expose to the public
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTRIBUTING -->
-
-## 🤝 Contributing <a id="contributing"></a>
-
-Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](https://github.com/degisew/commerce-store/issues/).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- SUPPORT -->
-
-## ⭐️ Show your support <a id="support"></a>
-
-If you like this project give a ⭐️ to repo.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGEMENTS -->
-
-## 🙏 Acknowledgments <a id="acknowledgements"></a>
-
-I want to thank all my supporters.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<!-- LICENSE -->
-
-## 📝 License <a id="license"></a>
-
-This project is [MIT](https://github.com/degisew/commerce-store/blob/dev/LICENSE) licensed.
-
-_NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/mit/) - you can set it up quickly by [using templates available on GitHub](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository). You can also use [any other license](https://choosealicense.com/licenses/) if you wish._
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+</div>

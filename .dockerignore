@@ -1,0 +1,5 @@
+venv/
+LICENSE
+.git
+.gitignore
+.pre-commit-config.yaml
