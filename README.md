@@ -60,7 +60,7 @@ pip install -r requirements/dev.txt
 python manage.py runserver
 ```
 
-**Access**: [http://localhost:8000/api/v1/docs](http://localhost:8000/docs) for API docs.
+**Access**: [http://localhost:8000/api/v1/docs](http://localhost:8000/api/v1/docs) for API docs.
 
 ## Project Structure
 
