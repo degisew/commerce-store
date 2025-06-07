@@ -1,1 +1,6 @@
 -r base.txt
+
+cfgv==3.4.0
+identify==2.6.12
+nodeenv==1.9.1
+pre-commit==4.2.0

@@ -68,7 +68,7 @@ python manage.py runserver
 ├── apps/                 # Custom Apps collection
 ├── config/               # Project Configurations
 ├── docker
-│     └── dev/          
+│     └── dev/
 │          └── Dockerfile # Django API Dockerfile for development environment
 ├── docs/                 # Documentation files
 ├── requirements/         # requirements.txt files collection

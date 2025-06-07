@@ -14,35 +14,39 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
-    SpectacularSwaggerView
+    SpectacularSwaggerView,
 )
 
 
 api_v1_patterns = [
-    path('store/', include('apps.store.urls')),
+    path("store/", include("apps.store.urls")),
 ]
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
     path("api/v1/", include(api_v1_patterns)),
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.jwt')),
-
-    path('api/v1/docs/',
-         SpectacularSwaggerView.as_view(url_name='schema'), name='docs'),
-    path('api/schema/redoc/',
-         SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
-    path('api/schema/',
-         SpectacularAPIView.as_view(), name='schema'),
+    path("auth/", include("djoser.urls")),
+    path("auth/", include("djoser.urls.jwt")),
+    path(
+        "api/v1/docs/", SpectacularSwaggerView.as_view(url_name="schema"), name="docs"
+    ),
+    path(
+        "api/schema/redoc/",
+        SpectacularRedocView.as_view(url_name="schema"),
+        name="redoc",
+    ),
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
 ]
 
 if settings.DEBUG:
     import debug_toolbar
-    urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]
+
+    urlpatterns += [path("__debug__/", include(debug_toolbar.urls))]
